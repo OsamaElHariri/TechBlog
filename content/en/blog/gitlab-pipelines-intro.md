@@ -1,0 +1,57 @@
+---
+author: "Osama El Hariri"
+title: "An Introduction to GitLab Deployment Pipelines - Part 1"
+date: 2023-01-17
+description: "Get familiar with the basics of GitLab CI/CD and start deploying your projects like the pros"
+tags: ["infrastructure"]
+thumbnail: /blog_headers/rocketship_deployment_pipeline.jpeg
+---
+
+### What is a deployment pipeline
+
+Say you have a piece of code that you wrote, and now you are ready to show it to the world. If your code is a website, what you can do is run the build command of whatever tool you are using, then drag the resulting files and drop them in your favorite static website host. If your code is an API, what you can do is also build these files (depending on what language you are using), then grab the result of the build and upload it to your favorite cloud provider. This process would then need to be repeated for every single change you want to make. Sound tedious? Well yeah, that's because it is! It's also error prone, and in large teams is outright not feasible.
+
+This is where deployment pipelines come in. Deployment pipelines are a way to automate whatever process you went through to get your code from your computer and onto the internet for all to see. By doing that, this process is now predictable, repeatable, and scalable. If you have a code repository, chances are you can add a deployment pipeline to it. In this article, I'll be zooming in on GitLab and how you can setup a pipeline to deploy any project you are working on.
+
+### Pipeline basics
+
+A deployment pipeline is a series of steps that need to be taken to prepare your code for deployment, and then to actually deploy that code. This means it should include steps like taking your raw files and building them, then uploading them to the cloud provider.
+
+In GitLab, the series of steps looks like this:
+
+![Example of a GitLab](/images/gitlab_pipelines_intro/gitlab-pipeline-example.png)
+
+In GitLab, they are called stages, and each stage only runs when the previous stage is done. In this example, there are 3 stages called `stage1`, `stage2`, and `stage3`. Inside these stages, you can run jobs that prepare your code for deployment. Feel free to click through the steps and explore this test pipeline [on GitLab](https://gitlab.com/OsamaElHariri/greatest-social-network-of-all-time/-/pipelines/751195397). This pipeline can be generated via the following `.gitlab-ci.yaml` file:
+
+```yaml
+# .gitlab-ci.yaml
+stages:
+  - stage1
+  - stage2
+  - stage3
+
+some-job-in-the-first-stage:
+  stage: stage1
+  image: alpine
+  script:
+    - echo "I'm some-job-in-the-first-stage and I ran this line!"
+
+a-job-in-the-second-stage:
+  stage: stage2
+  image: alpine
+  script:
+    - echo "I'm a-job-in-the-second-stage and I ran this line!"
+
+this-job-is-in-the-third-stage:
+  stage: stage3
+  image: alpine
+  script:
+    - echo "I'm this-job-is-in-the-third-stage and I ran this line!"
+```
+
+
+This particular pipeline has three stages.
+
+![Gitlab yaml to stage](/images/gitlab_pipelines_intro/gitlab-yaml-pipeline-to-stage.png)
+
+
