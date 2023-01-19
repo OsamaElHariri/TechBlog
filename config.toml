@@ -12,8 +12,8 @@ DefaultContentLanguageInSubdir = true
     weight = 1
     languageName = "English"
     [languages.en.params]
-      introTitle = "Hey! I'm Osama El Hariri"
-      introSubtitle = "Go beyond the hello world and start deploying your projects. I'm a senior software engineer and I've been working with startups for over 5 years. I've deployed a handful of side projects and I think if you are already done with your hello world, you should deploy your projects too."
+      introTitle = "Ready to deploy your code?"
+      introSubtitle = "Go beyond the hello world and start finishing and deploying your projects. I'm a senior software engineer and I've been working with startups for over 5 years. I've deployed a handful of side projects and I think if you are already done with your hello world, you should deploy your projects too."
       introPhoto = "/profile_pic.jpg"
       logo = "/blist-logo.png"
     [[languages.en.menu.main]]

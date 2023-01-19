@@ -192,11 +192,10 @@
     "ids": [
       "TableOfContents",
       "a",
-      "one",
       "pipeline-basics",
-      "two",
       "what-is-a-deployment-pipeline",
-      "what-is-a-pipeline"
+      "what-is-gitlab-ciyaml-anyways",
+      "wrapping-up"
     ]
   }
 }
